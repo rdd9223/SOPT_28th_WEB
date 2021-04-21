@@ -29,7 +29,7 @@ const renderDate = () => {
 
   const monthName = monthList[month];
 
-  header.innerHTML = `Today is <span>${day} ${monthName}, ${year}</span>`;
+  header.innerHTML = `Today is <span>${day} ${monthName}</span>,<span> ${year}</span>`;
 
   if (hour >= 0 && hour < 12) {
     if (hour === 0) hour = 12;
