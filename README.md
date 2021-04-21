@@ -1,0 +1,2 @@
+# SOPT_28th_WEB
+SOPT 28기 웹파트
