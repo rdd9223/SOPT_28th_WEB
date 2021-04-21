@@ -16,7 +16,7 @@ body {
 .header {
   font-size: 60px;
   font-weight: bold;
-  margin: auto;
+  margin: 50px auto;
 }
 
 .header > span {
