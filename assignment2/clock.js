@@ -18,7 +18,7 @@ const fillZero = (num) => {
   }
 };
 
-const renderDate = () => {
+const renderDate = (() => {
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth();
@@ -40,7 +40,7 @@ const renderDate = () => {
   }
 
   digitalTime.innerHTML = `${fillZero(hour)} : ${fillZero(minute)} : ${fillZero(second)}`;
-};
+})();
 
 // // 시침의 각도를 계산합니다. 시침은 한 시간당 30도씩, 분당 0.5도씩 움직입니다
 // // 90도를 더하는 이유는 바늘이 -90도로 누워있는 상태에서 시작하기 때문입니다 (css 참고)
