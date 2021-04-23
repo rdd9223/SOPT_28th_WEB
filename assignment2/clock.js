@@ -6,6 +6,7 @@ const analogMinute = document.querySelector(".analog_minute"); // 해당 클래�
 const analogSecond = document.querySelector(".analog_second"); // 해당 클래스이름을 가진 요소를 가져옵니다
 
 const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let hour24 = false; // 24시간인지 12시간인지 저장하는 전역변수를 지정합니다
 
 // 00 : 00의 형식을 맞추기 위해 한자리 수는 앞에 0을 채워주는 함수입니다
 const fillZero = (num) => {
@@ -17,7 +18,7 @@ const fillZero = (num) => {
     return num;
   }
 };
-const renderDate = () => {
+const getDate = () => {
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth();
@@ -25,10 +26,7 @@ const renderDate = () => {
   let hour = today.getHours();
   const minute = today.getMinutes();
   const second = today.getSeconds();
-
   const monthName = monthList[month];
-
-  header.innerHTML = `Today is <span>${day} ${monthName}</span>,<span> ${year}</span>`;
 
   if (hour >= 0 && hour < 12) {
     if (hour === 0) hour = 12;
@@ -38,8 +36,10 @@ const renderDate = () => {
     digitalButton.innerHTML = "PM";
   }
 
-  digitalTime.innerHTML = `${fillZero(hour)} : ${fillZero(minute)} : ${fillZero(second)}`;
+  return { today, year, month, day, hour, minute, second, monthName };
+};
 
+const renderAnalogClock = ({ hour, minute, second }) => {
   // 시침의 각도를 계산합니다. 시침은 한 시간당 30도씩, 분당 0.5도씩 움직입니다
   // 90도를 더하는 이유는 바늘이 -90도로 누워있는 상태에서 시작하기 때문입니다 (css 참고)
   const hourDegree = (hour + minute / 60) * (360 / 12) + 90;
@@ -51,9 +51,21 @@ const renderDate = () => {
   analogSecond.style.transform = `rotate(${secondDegree}deg)`;
 };
 
+const renderDigitalClock = ({ year, day, hour, minute, second, monthName }) => {
+  header.innerHTML = `Today is <span>${day} ${monthName}</span>,<span> ${year}</span>`;
+  digitalTime.innerHTML = `${fillZero(hour)} : ${fillZero(minute)} : ${fillZero(second)}`;
+};
+
+const renderClocks = (data) => {
+  renderAnalogClock(data);
+  renderDigitalClock(data);
+};
+
 const init = () => {
-  renderDate();
-  setInterval(renderDate, 1000); // 1초 간격으로 콜백함수를 실행합니다
+  const now = getDate();
+
+  renderClocks(now);
+  setInterval(renderClocks(now), 1000); // 1초 간격으로 콜백함수를 실행합니다
 };
 
 init();
