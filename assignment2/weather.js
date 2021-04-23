@@ -4,6 +4,7 @@ const weatherTemperature = document.querySelector(".weather_temperature");
 const weatherMain = document.querySelector(".weather_main");
 const weatherTemps = document.querySelector(".weather_temps");
 const weatherOthers = document.querySelector(".weather_others");
+const weatherIcon = document.querySelector(".weather_icon");
 
 // API 통신을 하기 때문에 async, await을 사용합니다
 const getWeatherData = async (lat, lon) => {
@@ -33,6 +34,7 @@ const renderWeatherData = async (weatherData) => {
   weatherMain.innerHTML = `<span>${weatherData.weatherMain}</span>`;
   weatherTemps.innerHTML = `<span>Feels: </span>${weatherData.tempFeels}°C\t\t<span>Min: </span>${weatherData.tempMax}°C\t\t<span>Max: </span>${weatherData.tempMin}°C\t\t`;
   weatherOthers.innerHTML = `<span>Humidity: </span>${weatherData.humidity}\t\t<span>Wind: </span>${weatherData.wind}m/s`;
+  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherData.weatherIcon}@2x.png" alt="icon" />`;
 
   return;
 };

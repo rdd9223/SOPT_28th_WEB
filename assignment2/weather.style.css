@@ -4,6 +4,16 @@
 }
 
 .weather_top {
+  display: flex;
+  justify-content: center;
+}
+
+.weather_icon {
+  display: flex;
+  width: 180px;
+}
+
+.weather_top_right {
   height: 180px;
   display: flex;
   flex-direction: column;
