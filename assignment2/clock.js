@@ -17,7 +17,6 @@ const fillZero = (num) => {
     return num;
   }
 };
-
 const renderDate = () => {
   const today = new Date();
   const year = today.getFullYear();
