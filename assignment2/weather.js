@@ -32,7 +32,7 @@ const renderWeatherData = async (weatherData) => {
   weatherTemperature.innerHTML = `<span>${weatherData.temp}°C</span>`;
   weatherMain.innerHTML = `<span>${weatherData.weatherMain}</span>`;
   weatherTemps.innerHTML = `<span>Feels: </span>${weatherData.tempFeels}°C\t\t<span>Min: </span>${weatherData.tempMax}°C\t\t<span>Max: </span>${weatherData.tempMin}°C\t\t`;
-  weatherOthers.innerHTML = `<span>Humidity: </span>${weatherData.humidity}<span>Wind: </span>${weatherData.wind}m/s`;
+  weatherOthers.innerHTML = `<span>Humidity: </span>${weatherData.humidity}\t\t<span>Wind: </span>${weatherData.wind}m/s`;
 
   return;
 };
