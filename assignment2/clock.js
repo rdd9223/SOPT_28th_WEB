@@ -17,6 +17,7 @@ const fillZero = (num) => {
     return num;
   }
 };
+
 const getDate = () => {
   const today = new Date();
   const year = today.getFullYear();
@@ -28,7 +29,7 @@ const getDate = () => {
   const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const monthName = monthList[month];
 
-  return { today, year, month, day, hour, minute, second, monthName };
+  return { year, day, hour, minute, second, monthName };
 };
 
 const changeTime = () => {
@@ -36,7 +37,7 @@ const changeTime = () => {
 };
 
 const renderClock = () => {
-  let { today, year, month, day, hour, minute, second, monthName } = getDate();
+  let { year, day, hour, minute, second, monthName } = getDate();
 
   if (!hour24) {
     if (hour >= 0 && hour < 12) {
