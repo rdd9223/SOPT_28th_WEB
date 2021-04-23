@@ -3,12 +3,93 @@
   padding: 0;
 }
 
+:root {
+  --bg: #f8f8f8;
+  --date-color: orangered;
+  --subtitle-color: #363636;
+  --text-color: #464646;
+  --input-back: #ddd;
+  --input-color: #c9da8a;
+}
+
+/* 테마가 dark일 경우 적용되는 css */
+[data-theme="dark"] {
+  --bg: #232130;
+  --date-color: #3c3650;
+  --title-color: #89aeff;
+  --subtitle-color: #89aeff;
+  --text-color: #68608b;
+  --input-back: #161616;
+  --input-color: #294797;
+}
+.theme-switcher {
+  width: 50px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.theme-switcher > input {
+  display: none;
+}
+
+.theme-switcher > input:checked + .switch {
+  left: 20px;
+}
+
+.theme-switcher > input:checked + .switch > .sun {
+  opacity: 0;
+}
+
+.theme-switcher > input:checked + .switch > .moon {
+  opacity: 1;
+}
+
+.background {
+  width: 50px;
+  height: 20px;
+  background-color: var(--input-back);
+  border-radius: 30px;
+}
+
+.switch {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  height: 30px;
+  width: 30px;
+  background-color: var(--input-color);
+  position: absolute;
+  top: -5px;
+  left: 0px;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch > img {
+  width: 60%;
+  height: auto;
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+}
+
+.sun {
+  opacity: 1;
+  fill: white;
+}
+
+.moon {
+  opacity: 0;
+}
+
 body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  background-color: skyblue;
-  color: white;
+  background-color: var(--bg);
+  color: var(--text-color);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -20,11 +101,7 @@ body {
 }
 
 .header > span {
-  color: red;
-}
-
-.header > span:last-child {
-  color: burlywood;
+  color: var(--date-color);
 }
 
 .main {

@@ -1,3 +1,22 @@
+:root {
+  --bg: #f8f8f8;
+  --date-color: orangered;
+  --subtitle-color: #363636;
+  --text-color: #464646;
+  --input-back: #ddd;
+  --input-color: #c9da8a;
+}
+
+[data-theme="dark"] {
+  --bg: #232130;
+  --date-color: orangered;
+  --title-color: #89aeff;
+  --subtitle-color: #89aeff;
+  --text-color: #68608b;
+  --input-back: #161616;
+  --input-color: #294797;
+}
+
 .clock {
   display: flex;
   flex-direction: column;
@@ -16,9 +35,9 @@
 }
 
 .digital_button {
-  color: white;
-  background-color: skyblue;
-  border: 1px solid white;
+  color: var(--text-color);
+  background-color: var(--bg);
+  border: 1px solid var(--text-color);
   padding: 5px;
   margin-left: 10px;
   height: 36px;
@@ -30,7 +49,7 @@
   border: 1px;
   height: 200px;
   width: 200px;
-  background-color: white;
+  background-color: var(--subtitle-color);
   border-radius: 100%;
   margin: 10px auto;
 }
@@ -61,7 +80,7 @@
   width: 60px;
   top: 100px;
   left: 40px;
-  background-color: skyblue;
+  background-color: var(--input-back);
 }
 
 .analog_minute {
@@ -69,7 +88,7 @@
   width: 90px;
   top: 98px;
   left: 10px;
-  background-color: black;
+  background-color: var(--input-color);
 }
 
 .analog_second {
