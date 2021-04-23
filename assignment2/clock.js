@@ -39,7 +39,7 @@ const getDate = () => {
   return { today, year, month, day, hour, minute, second, monthName };
 };
 
-const renderAnalogClock = ({ hour, minute, second }) => {
+const renderClock = ({ year, day, hour, minute, second, monthName }) => {
   // 시침의 각도를 계산합니다. 시침은 한 시간당 30도씩, 분당 0.5도씩 움직입니다
   // 90도를 더하는 이유는 바늘이 -90도로 누워있는 상태에서 시작하기 때문입니다 (css 참고)
   const hourDegree = (hour + minute / 60) * (360 / 12) + 90;
@@ -49,23 +49,16 @@ const renderAnalogClock = ({ hour, minute, second }) => {
   analogHour.style.transform = `rotate(${hourDegree}deg)`;
   analogMinute.style.transform = `rotate(${minuteDegree}deg)`;
   analogSecond.style.transform = `rotate(${secondDegree}deg)`;
-};
 
-const renderDigitalClock = ({ year, day, hour, minute, second, monthName }) => {
   header.innerHTML = `Today is <span>${day} ${monthName}</span>,<span> ${year}</span>`;
   digitalTime.innerHTML = `${fillZero(hour)} : ${fillZero(minute)} : ${fillZero(second)}`;
-};
-
-const renderClocks = (data) => {
-  renderAnalogClock(data);
-  renderDigitalClock(data);
 };
 
 const init = () => {
   const now = getDate();
 
-  renderClocks(now);
-  setInterval(renderClocks(now), 1000); // 1초 간격으로 콜백함수를 실행합니다
+  renderClock(now);
+  setInterval(renderClock(now), 1000); // 1초 간격으로 콜백함수를 실행합니다
 };
 
 init();
