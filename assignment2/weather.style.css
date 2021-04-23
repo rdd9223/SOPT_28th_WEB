@@ -1,0 +1,33 @@
+.weather {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather_top {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.weather_temperature {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.weather_main {
+  font-size: 30px;
+}
+
+.weather_bottom {
+  height: 80px;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.weather_bottom > div > span {
+  color: lightgray;
+}
