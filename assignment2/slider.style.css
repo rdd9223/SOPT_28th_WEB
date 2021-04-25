@@ -1,3 +1,22 @@
+:root {
+  --bg: #f8f8f8;
+  --date-color: orangered;
+  --subtitle-color: #363636;
+  --text-color: #464646;
+  --input-back: #ddd;
+  --input-color: #c9da8a;
+}
+
+[data-theme="dark"] {
+  --bg: #232130;
+  --date-color: orangered;
+  --title-color: #89aeff;
+  --subtitle-color: #89aeff;
+  --text-color: #68608b;
+  --input-back: #161616;
+  --input-color: #294797;
+}
+
 .slide_wrap {
   display: flex;
   justify-content: center;
@@ -23,7 +42,7 @@
   height: 100vh;
 }
 .slide_content.slide_content.slide01 {
-  background-color: blueviolet;
+  background-color: var(--bg);
 }
 .slide_content.slide_content.slide02 {
   background-color: blue;
