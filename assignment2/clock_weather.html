@@ -8,11 +8,36 @@
     <link rel="stylesheet" href="main.style.css" />
     <link rel="stylesheet" href="clock.style.css" />
     <link rel="stylesheet" href="weather.style.css" />
+    <link rel="stylesheet" href="slider.style.css" />
   </head>
   <body>
     <script defer src="clock.js"></script>
     <script defer src="weather.js"></script>
     <script defer src="darkmode.js"></script>
+    <script defer src="slider.js"></script>
+    <div class="slide_wrap">
+      <div class="slide_box">
+        <div class="slide_list clearfix">
+          <div class="slide_content slide01">
+            <p>1</p>
+          </div>
+          <div class="slide_content slide02">
+            <p>2</p>
+          </div>
+          <div class="slide_content slide03">
+            <p>3</p>
+          </div>
+          <div class="slide_content slide04">
+            <p>4</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide_btn_box">
+        <button type="button" class="slide_btn_prev">Prev</button>
+        <button type="button" class="slide_btn_next">Next</button>
+      </div>
+      <ul class="slide_pagination"></ul>
+    </div>
     <label class="theme-switcher" for="themeswitch">
       <div class="background"></div>
       <input type="checkbox" id="themeswitch" />
