@@ -1,11 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { ISearchBarProps } from "../interfaces";
+import Styled from "styled-components";
 
-const ResultCard = () => {
+const SearchBarWrap = Styled.div`
+  input {
+    width: 300px;
+    background-color:#28223f;
+    border: 2px solid skyblue;
+    color: white;
+    padding: 5px;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+  input::placeholder {
+    color: white;
+  }
+  input:focus {
+    outline: none;
+  }
+`;
+
+const SearchBar = ({ getUser }: ISearchBarProps) => {
+  const [userName, setUserName] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    getUser(userName);
+    setUserName("");
+  };
+
   return (
-    <>
-      <div className="result_card">ResultCard</div>
-    </>
+    <SearchBarWrap>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="GitHub ID를 입력하세요" onChange={handleChange} value={userName} />
+      </form>
+    </SearchBarWrap>
   );
 };
 
-export default ResultCard;
+export default SearchBar;

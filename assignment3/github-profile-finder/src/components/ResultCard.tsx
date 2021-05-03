@@ -1,11 +1,13 @@
 import React from "react";
+import { IResultCardProps } from "../interfaces";
 
-const SearchBar = () => {
+const ResultCard = ({ data }: IResultCardProps) => {
   return (
-    <form>
-      <input type="text" placeholder="GitHub ID를 입력하세요" />
-    </form>
+    <>
+      <div className="result_card">ResultCard</div>
+      <div>{JSON.stringify(data)}</div>
+    </>
   );
 };
 
-export default SearchBar;
+export default ResultCard;
