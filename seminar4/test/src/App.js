@@ -35,7 +35,13 @@ function App() {
         <Calendar year={year} setYear={setYear} month={month} setMonth={setMonth} />
         <Title />
         <Switch>
-          <Route exact path="/" component={Main} />
+          <Route
+            exact
+            path="/"
+            component={() => {
+              return <Main props={userData} />;
+            }}
+          />
           <Route path="/diary/:id" component={Diary} />
           <Route component={() => <div>Page Not Found</div>} />
         </Switch>
