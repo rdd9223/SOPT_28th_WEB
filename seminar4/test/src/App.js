@@ -5,13 +5,22 @@ import Calendar from "./components/common/Calender";
 import Title from "./components/common/Title";
 import Footer from "./components/common/Footer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+const getCurrentDate = () => {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth();
+
+  return { currentYear, currentMonth };
+};
 
 function App() {
+  const [year, setYear] = useState(getCurrentDate().currentYear);
+  const [month, setMonth] = useState(getCurrentDate().currentMonth);
   return (
     <>
       <BrowserRouter>
         <MainHeader />
-        <Calendar />
+        <Calendar year={year} setYear={setYear} month={month} setMonth={setMonth} />
         <Title />
         <Switch>
           <Route exact path="/" component={Main} />
