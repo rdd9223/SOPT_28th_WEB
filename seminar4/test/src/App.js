@@ -9,10 +9,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 function App() {
   return (
     <>
-      <MainHeader />
-      <Calendar />
-      <Title />
       <BrowserRouter>
+        <MainHeader />
+        <Calendar />
+        <Title />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/diary/:id" component={Diary} />
