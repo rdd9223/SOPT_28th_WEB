@@ -11,10 +11,11 @@ const getDateFormat = (date) => {
 
 const CardWrap = styled.div``;
 
-const Card = ({ userData }) => {
-  // 위에서 전달한 userData를 받아옵니다
-  const { date, title, image, weather, tags } = userData; // 구조분해할당으로 각각 요소들을 분리해줍니다
-  /* card 내부에서는 각각 image, top, title, tags 요소를 세로로 나열합니다*/
+const Card = ({ props }) => {
+  // 위에서 전달한 props를 받아옵니다
+  const { date, title, image, weather, tags } = props; // 구조분해할당으로 각각 요소들을 분리해줍니다
+  console.log(image);
+
   return (
     <CardWrap>
       <div className="card">
