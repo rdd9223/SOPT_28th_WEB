@@ -1,12 +1,12 @@
-import Main from "./pages/Main";
-import Diary from "./pages/Diary";
-import MainHeader from "./components/common/MainHeader";
-import Calendar from "./components/common/Calender";
-import Title from "./components/common/Title";
-import Footer from "./components/common/Footer";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useState, useEffect } from "react";
+import Calendar from "./components/common/Calender";
+import Footer from "./components/common/Footer";
+import MainHeader from "./components/common/MainHeader";
+import Title from "./components/common/Title";
 import getUserData from "./lib/api";
+import Diary from "./pages/Diary";
+import Main from "./pages/Main";
 
 const getCurrentDate = () => {
   const now = new Date();
@@ -35,13 +35,14 @@ function App() {
         <Calendar year={year} setYear={setYear} month={month} setMonth={setMonth} />
         <Title />
         <Switch>
-          <Route
+          {/* <Route
             exact
             path="/"
             component={() => {
               return <Main props={userData} />;
             }}
-          />
+          /> */}
+          <Route exact path="/" component={() => <Main year={year} month={month} />} />
           <Route path="/diary/:id" component={Diary} />
           <Route component={() => <div>Page Not Found</div>} />
         </Switch>
