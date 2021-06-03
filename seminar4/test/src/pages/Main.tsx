@@ -10,8 +10,13 @@ const MainWrap = Styled.div`
   row-gap: 25px;
 `;
 
-const Main = ({ year, month }) => {
-  const [userData, setUserData] = React.useState(null); // 초기값을 null로 설정합니다
+interface IMainProps {
+  year: number;
+  month: number;
+}
+
+const Main = ({ year, month }: IMainProps) => {
+  const [userData, setUserData] = React.useState([]); // 초기값을 null로 설정합니다
 
   React.useEffect(() => {
     // useEffect 내부에서 api 요청을 합니다
@@ -24,10 +29,9 @@ const Main = ({ year, month }) => {
 
   return (
     <MainWrap>
-      {userData &&
-        userData.map((data, index) => {
-          return <Card key={index} props={data} />;
-        })}
+      {userData?.map((data, index) => {
+        return <Card key={index} props={data} />;
+      })}
     </MainWrap>
   );
 };

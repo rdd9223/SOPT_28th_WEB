@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getUserData = async () => {
   try {
-    const data = await axios.get("http://localhost:4000/posts");
+    const data = await axios.get("http://localhost:3001/posts");
     console.log("[Success]");
     return data.data.data;
   } catch (err) {

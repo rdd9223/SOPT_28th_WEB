@@ -2,7 +2,7 @@ import React from "react";
 import MenuIcon from "../../assets/Menu.svg";
 import ProfileIcon from "../../assets/Profile.svg";
 import Styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
 const MainHeaderWrap = Styled.div`
   .header {
@@ -34,7 +34,7 @@ const MainHeaderWrap = Styled.div`
   }
 `;
 
-const MainHeader = ({ history }) => {
+const MainHeader = ({ history }: RouteComponentProps) => {
   return (
     <MainHeaderWrap>
       <div className="header">

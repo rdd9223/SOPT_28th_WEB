@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import LeftOff from "../../assets/LeftOff.svg";
 import LeftOn from "../../assets/LeftOn.svg";
 import RightOff from "../../assets/RightOff.svg";
@@ -54,10 +54,17 @@ const CalendarWrap = Styled.div`
   }
 `;
 
-const Calendar = ({ year, setYear, month, setMonth }) => {
+interface ICalendarProps {
+  year: number;
+  setYear: (year: number) => void;
+  month: number;
+  setMonth: (month: number) => void;
+}
+
+const Calendar = ({ year, setYear, month, setMonth }: ICalendarProps) => {
   const monthList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-  const leftButton = React.useRef();
-  const rightButton = React.useRef();
+  const leftButton = useRef<HTMLImageElement>(null);
+  const rightButton = useRef<HTMLImageElement>(null);
 
   return (
     <CalendarWrap>
@@ -68,8 +75,8 @@ const Calendar = ({ year, setYear, month, setMonth }) => {
             src={LeftOff}
             alt=""
             onClick={() => setYear(year - 1)}
-            onMouseEnter={() => (leftButton.current.src = LeftOn)}
-            onMouseLeave={() => (leftButton.current.src = LeftOff)}
+            onMouseEnter={() => leftButton.current && (leftButton.current.src = LeftOn)}
+            onMouseLeave={() => leftButton.current && (leftButton.current.src = LeftOff)}
             ref={leftButton}
           />
           <div className="calendar__year--title">{year}년</div>
@@ -78,8 +85,8 @@ const Calendar = ({ year, setYear, month, setMonth }) => {
             src={RightOff}
             alt=""
             onClick={() => setYear(year + 1)}
-            onMouseEnter={() => (rightButton.current.src = RightOn)}
-            onMouseLeave={() => (rightButton.current.src = RightOff)}
+            onMouseEnter={() => rightButton.current && (rightButton.current.src = RightOn)}
+            onMouseLeave={() => rightButton.current && (rightButton.current.src = RightOff)}
             ref={rightButton}
           />
         </div>
@@ -90,7 +97,7 @@ const Calendar = ({ year, setYear, month, setMonth }) => {
                 key={item}
                 className="calendar__month--button"
                 onClick={() => setMonth(item)}
-                style={item === month ? { fontsize: "22px", fontWeight: "bold" } : {}}
+                style={item === month ? { fontSize: "22px", fontWeight: "bold" } : {}}
               >
                 {item + 1}월
               </div>

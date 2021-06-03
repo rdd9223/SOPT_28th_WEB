@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import Styled from "styled-components";
 
 const TitleWrap = Styled.div`
@@ -15,7 +15,7 @@ const TitleWrap = Styled.div`
 `;
 
 // history 안에 location이 들어있다.
-const Title = ({ location }) => {
+const Title = ({ location }: RouteComponentProps) => {
   const title = location.pathname === "/" ? "이번 달 일기" : "오늘의 일기";
 
   return (
