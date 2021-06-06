@@ -1,8 +1,7 @@
 import React from "react";
 import Styled from "styled-components";
 import Card from "../components/main/Card";
-// api 요청 함수를 가져옵니다
-import getUserData from "../lib/api";
+import { getUserData } from "../lib/api";
 
 const MainWrap = Styled.div`
   display: grid;
