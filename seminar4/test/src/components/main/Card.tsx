@@ -3,11 +3,10 @@ import styled from "styled-components";
 import EmptyImage from "../../assets/Image.svg";
 
 // 서버에 date가 20200509 형식으로 저장되어있기 때문에, 이를 "5월 9일" 형태로 반환하는 함수입니다
-const getDateFormat = (date: string) => {
-  const dateNum = parseInt(date);
-  const year = (dateNum % 10000) / 100;
-  const day = dateNum % 100;
-  return `${year}월 ${day}일`;
+const getDateFormat = (date: number) => {
+  const month = parseInt(`${(date % 10000) / 100}`);
+  const day = date % 100;
+  return `${month}월 ${day}일`;
 };
 
 const CardWrap = styled.div`
