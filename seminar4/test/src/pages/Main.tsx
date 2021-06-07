@@ -2,17 +2,13 @@ import React from "react";
 import Styled from "styled-components";
 import Card from "../components/main/Card";
 import { getUserData } from "../lib/api";
+import { IMainProps, ICard, IRawData } from "../interfaces/card.interface";
 
 const MainWrap = Styled.div`
   display: grid;
   grid-template-columns: repeat(5, auto);
   row-gap: 25px;
 `;
-
-interface IMainProps {
-  year: number;
-  month: number;
-}
 
 const Main = ({ year, month }: IMainProps) => {
   const [userData, setUserData] = React.useState([]); // 초기값을 null로 설정합니다
