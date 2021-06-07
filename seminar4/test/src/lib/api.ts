@@ -1,15 +1,5 @@
 import axios from "axios";
-
-interface IUserData {
-  id: number;
-  date: number;
-  title: string;
-  image: string;
-  weather: string;
-  tags: string[];
-  summary: string;
-  text: string;
-}
+import { IRawData } from "../interfaces/card.interface";
 
 const instance = axios.create({
   baseURL: "http://localhost:3001",
@@ -17,8 +7,9 @@ const instance = axios.create({
 
 export const getUserData = async () => {
   try {
-    const data = await instance.get("posts");
+    const data = await instance.get("/posts");
     console.log("[Success]");
+
     return data.data.data;
   } catch (err) {
     console.log("[Fail]", err);
@@ -26,7 +17,7 @@ export const getUserData = async () => {
   }
 };
 
-export const createCardData = async (userData: IUserData) => {
+export const createCardData = async (userData: IRawData) => {
   try {
     const data = await instance.post("/posts", {
       data: userData,
