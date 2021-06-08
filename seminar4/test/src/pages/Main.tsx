@@ -3,7 +3,9 @@ import Styled from "styled-components";
 import Card from "../components/main/Card";
 import NewCard from "../components/main/NewCard";
 import { getUserData } from "../lib/api";
-import { IMainProps, ICard, IRawData } from "../interface";
+import { ICard, IRawData } from "../interface";
+import { useRecoilValue } from "recoil";
+import { dateState } from "../states/date";
 
 const MainWrap = Styled.div`
   display: grid;
@@ -11,17 +13,18 @@ const MainWrap = Styled.div`
   row-gap: 25px;
 `;
 
-const Main = ({ year, month }: IMainProps) => {
+const Main = () => {
   const [userData, setUserData] = React.useState<ICard[] | null>(null);
   const [rawData, setRawData] = React.useState<IRawData | null>(null);
+  const date = useRecoilValue(dateState);
 
   React.useEffect(() => {
     (async () => {
       const data = await getUserData();
       data && setRawData(data);
-      data[year] && setUserData(data[year][month]);
+      data[date.year] && setUserData(data[date.year][date.month]);
     })();
-  }, [year, month]);
+  }, [date.year, date.month]);
 
   return (
     <MainWrap>
@@ -30,8 +33,8 @@ const Main = ({ year, month }: IMainProps) => {
       })}
       <NewCard
         rawData={rawData!}
-        year={year}
-        month={month}
+        year={date.year}
+        month={date.month}
         setUserData={setUserData}
         id={userData ? userData.length + 1 : 1}
       />

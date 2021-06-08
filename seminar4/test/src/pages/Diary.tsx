@@ -1,7 +1,9 @@
 import React from "react";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
-const Diary = () => {
+function Diary({ match }: RouteComponentProps) {
+  console.log(match);
   return <div>Diarypage</div>;
-};
+}
 
-export default Diary;
+export default withRouter(Diary);
