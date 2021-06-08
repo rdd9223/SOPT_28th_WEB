@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IRawData } from "../interfaces/card.interface";
+import { IRawData } from "../interface";
 
 const instance = axios.create({
   baseURL: "http://localhost:3001",

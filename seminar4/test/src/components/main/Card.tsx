@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import EmptyImage from "../../assets/Image.svg";
-import { ICardProps } from "../../interfaces/card.interface";
+import { ICardProps } from "../../interface";
 
 // 서버에 date가 20200509 형식으로 저장되어있기 때문에, 이를 "5월 9일" 형태로 반환하는 함수입니다
 const getDateFormat = (date: number) => {

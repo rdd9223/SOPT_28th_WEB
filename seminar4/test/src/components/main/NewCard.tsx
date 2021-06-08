@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { createCardData } from "../../lib/api";
-import { INewCardProps } from "../../interfaces/card.interface";
+import { INewCardProps } from "../../interface";
 
 const NewCardWrap = styled.div`
   .card {

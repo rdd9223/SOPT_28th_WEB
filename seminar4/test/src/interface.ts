@@ -1,3 +1,5 @@
+import { RouteComponentProps } from "react-router-dom";
+
 export interface IRawData {
   [year: number]: ICard[][];
 }
@@ -24,6 +26,10 @@ export interface ICard {
 export interface IMainProps {
   year: number;
   month: number;
+}
+
+export interface IDiaryProps extends IMainProps {
+  match: RouteComponentProps;
 }
 
 export interface ICardProps {

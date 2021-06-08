@@ -3,7 +3,7 @@ import Styled from "styled-components";
 import Card from "../components/main/Card";
 import NewCard from "../components/main/NewCard";
 import { getUserData } from "../lib/api";
-import { IMainProps, ICard, IRawData } from "../interfaces/card.interface";
+import { IMainProps, ICard, IRawData } from "../interface";
 
 const MainWrap = Styled.div`
   display: grid;
