@@ -1,3 +1,4 @@
+import React from "react";
 export interface IRawData {
   [year: number]: ICard[][];
 }
@@ -29,4 +30,24 @@ export interface IDateState {
 export interface ICardProps {
   props: ICard;
   onClickFunc: () => void;
+}
+
+export interface IMatchParams {
+  id: string;
+}
+
+export interface ICardHeaderProps {
+  title: string;
+  isReadOnly: boolean;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => void;
+}
+
+export interface ICardInfoProps {
+  data: ICard;
+  isReadOnly: boolean;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => void;
 }
