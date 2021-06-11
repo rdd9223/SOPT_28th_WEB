@@ -1,4 +1,6 @@
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import Calendar from "./components/common/Calender";
 import Footer from "./components/common/Footer";
 import MainHeader from "./components/common/MainHeader";
@@ -8,7 +10,7 @@ import Main from "./pages/Main";
 
 function App() {
   return (
-    <>
+    <RecoilRoot>
       <BrowserRouter>
         <MainHeader />
         <Calendar />
@@ -21,7 +23,7 @@ function App() {
         </Switch>
       </BrowserRouter>
       <Footer />
-    </>
+    </RecoilRoot>
   );
 }
 
