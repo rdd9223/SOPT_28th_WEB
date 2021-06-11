@@ -28,4 +28,5 @@ export interface IDateState {
 
 export interface ICardProps {
   props: ICard;
+  onClickFunc: () => void;
 }

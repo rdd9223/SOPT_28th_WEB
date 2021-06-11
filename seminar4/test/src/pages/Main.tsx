@@ -6,6 +6,7 @@ import { getUserData } from "../lib/api";
 import { ICard, IRawData } from "../interface";
 import { useRecoilValue } from "recoil";
 import { dateState } from "../states/date";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
 const MainWrap = Styled.div`
   display: grid;
@@ -13,7 +14,7 @@ const MainWrap = Styled.div`
   row-gap: 25px;
 `;
 
-const Main = () => {
+const Main = ({ history }: RouteComponentProps) => {
   const [userData, setUserData] = React.useState<ICard[] | null>(null);
   const [rawData, setRawData] = React.useState<IRawData | null>(null);
   const date = useRecoilValue(dateState);
@@ -29,7 +30,9 @@ const Main = () => {
   return (
     <MainWrap>
       {userData?.map((data, index) => {
-        return <Card key={index} props={data} />;
+        return (
+          <Card key={index} props={data} onClickFunc={() => history.push(`/diary/${data.id}`)} />
+        );
       })}
       <NewCard
         rawData={rawData!}
@@ -42,4 +45,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default withRouter(Main);

@@ -83,12 +83,12 @@ const CardWrap = styled.div`
   }
 `;
 
-const Card = ({ props }: ICardProps) => {
+const Card = ({ props, onClickFunc }: ICardProps) => {
   const { date, title, image, weather, tags } = props;
 
   return (
     <CardWrap>
-      <div className="card">
+      <div className="card" onClick={onClickFunc}>
         <div className="card__image">
           {image ? (
             <img className="card__image--photo" src={image} alt="" />
