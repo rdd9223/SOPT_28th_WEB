@@ -1,9 +1,36 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
+import { ICardHeaderProps } from "../../interface";
 
-export default function CardHeader() {
-  return <CardHeaderWrap></CardHeaderWrap>;
+function CardHeader({ title, isReadOnly, handleChange }: ICardHeaderProps) {
+  return (
+    <CardHeaderWrap>
+      <input
+        type="text"
+        name="title"
+        className="header__title"
+        placeholder="제목을 입력해 주세요"
+        value={title}
+        readOnly={isReadOnly}
+        onChange={handleChange}
+      />
+      <div className="header__empty"></div>
+      {/* {isReadOnly ? (
+        <button className="header__edit" onClick={() => history.push(`/diary/edit/${id}`)}>
+          수정
+        </button>
+      ) : (
+        <button className="header__edit" onClick={handleEdit}>
+          완료
+        </button>
+      )} */}
+      <button className="header__edit">수정</button>
+      <button className="header__delete">삭제</button>
+    </CardHeaderWrap>
+  );
 }
+
+export default CardHeader;
 
 const CardHeaderWrap = styled.div`
   display: flex;
