@@ -1,8 +1,18 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { ICardHeaderProps } from "../../interface";
 
-function CardHeader({ title, isReadOnly, handleChange }: ICardHeaderProps) {
+function CardHeader({
+  title,
+  isReadOnly,
+  handleChange,
+  handleEdit,
+  history,
+  match,
+}: ICardHeaderProps) {
+  const id = parseInt(match.params.id);
+
   return (
     <CardHeaderWrap>
       <input
@@ -15,7 +25,7 @@ function CardHeader({ title, isReadOnly, handleChange }: ICardHeaderProps) {
         onChange={handleChange}
       />
       <div className="header__empty"></div>
-      {/* {isReadOnly ? (
+      {isReadOnly ? (
         <button className="header__edit" onClick={() => history.push(`/diary/edit/${id}`)}>
           수정
         </button>
@@ -23,14 +33,13 @@ function CardHeader({ title, isReadOnly, handleChange }: ICardHeaderProps) {
         <button className="header__edit" onClick={handleEdit}>
           완료
         </button>
-      )} */}
-      <button className="header__edit">수정</button>
+      )}
       <button className="header__delete">삭제</button>
     </CardHeaderWrap>
   );
 }
 
-export default CardHeader;
+export default withRouter(CardHeader);
 
 const CardHeaderWrap = styled.div`
   display: flex;

@@ -10,13 +10,13 @@ import { ICard, IMatchParams, IRawData } from "../../interface";
 
 interface ICardProps extends RouteComponentProps<IMatchParams> {
   data: ICard;
-  // rawData: IRawData;
+  rawData: IRawData;
 }
 
-function Card({ data, match, history /* , rawData*/ }: ICardProps) {
-  const id = parseInt(match.params.id); // 현재 카드의 index 번호
+function Card({ data, match, history, rawData }: ICardProps) {
+  const id = parseInt(match.params.id);
   const isReadOnly = match.path === "/diary/:id";
-  // const { year, month } = useRecoilValue(dateState);
+  const { year, month } = useRecoilValue(dateState);
   const [state, setState] = useState(data);
 
   const handleChange = (
@@ -29,14 +29,15 @@ function Card({ data, match, history /* , rawData*/ }: ICardProps) {
     });
   };
 
-  // const handleEdit = async () => {
-  //   const index = rawData[year][month].findIndex((data) => data.id === id);
-  //   rawData[year][month][index] = state;
+  const handleEdit = async () => {
+    // const index = rawData[year][month].findIndex((data) => data.id === id);
+    const newList = rawData[year].filter((data) => data);
+    newList[month][id] = state;
 
-  //   rawData[year][month][id] = state; // 현재까지 수정된 state를 원본 데이터에 반영합니다
-  //   const data = await createCardData(rawData); // 수정된 원본 데이터로 API를 호출합니다
-  //   history.goBack(); // 카드가 수정된 이후에는 이전('/diary/:id')으로 돌아갑니다
-  // };
+    const data = await createCardData({ ...rawData, [year]: newList });
+
+    history.goBack();
+  };
 
   return (
     <CardWrap>
@@ -44,7 +45,7 @@ function Card({ data, match, history /* , rawData*/ }: ICardProps) {
         title={state.title}
         isReadOnly={isReadOnly}
         handleChange={handleChange}
-        // handleEdit={handleEdit}
+        handleEdit={handleEdit}
       />
       <CardInfo data={state} isReadOnly={isReadOnly} handleChange={handleChange} />
       <textarea

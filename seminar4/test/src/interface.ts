@@ -1,4 +1,5 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
 export interface IRawData {
   [year: number]: ICard[][];
 }
@@ -36,12 +37,13 @@ export interface IMatchParams {
   id: string;
 }
 
-export interface ICardHeaderProps {
+export interface ICardHeaderProps extends RouteComponentProps<IMatchParams> {
   title: string;
   isReadOnly: boolean;
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => void;
+  handleEdit: () => void;
 }
 
 export interface ICardInfoProps {
