@@ -1,28 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import Styled from "styled-components";
 import { createCardData } from "../../lib/api";
 import { INewCardProps } from "../../interface";
-
-const NewCardWrap = styled.div`
-  .card {
-    box-sizing: border-box;
-    width: 220px;
-    height: 257px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__text {
-      font-size: 20px;
-      color: #cea0e3;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-  }
-`;
 
 const getDate = () => {
   const now = new Date();
@@ -34,7 +13,7 @@ const getDate = () => {
   return parseInt(year + monthF + dayF);
 };
 
-export default function NewCard({ rawData, year, month, setUserData, id }: INewCardProps) {
+function NewCard({ rawData, year, month, setUserData, id }: INewCardProps) {
   const createCard = async () => {
     const cardForm = {
       id,
@@ -59,3 +38,26 @@ export default function NewCard({ rawData, year, month, setUserData, id }: INewC
     </NewCardWrap>
   );
 }
+
+export default NewCard;
+
+const NewCardWrap = Styled.div`
+  .card {
+    box-sizing: border-box;
+    width: 220px;
+    height: 257px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__text {
+      font-size: 20px;
+      color: #cea0e3;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;

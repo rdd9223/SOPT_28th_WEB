@@ -4,6 +4,23 @@ import ProfileIcon from "../../assets/Profile.svg";
 import Styled from "styled-components";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
+function MainHeader({ history }: RouteComponentProps) {
+  return (
+    <MainHeaderWrap>
+      <div className="header">
+        <img className="header__menu" src={MenuIcon} alt="" />
+        <div className="header__title" onClick={() => history.push("/")}>
+          Diary App
+        </div>
+        <img className="header__profile" src={ProfileIcon} alt="" />
+      </div>
+      <div className="header__hr"></div>
+    </MainHeaderWrap>
+  );
+}
+
+export default withRouter(MainHeader);
+
 const MainHeaderWrap = Styled.div`
   .header {
     display: flex;
@@ -33,20 +50,3 @@ const MainHeaderWrap = Styled.div`
     }
   }
 `;
-
-const MainHeader = ({ history }: RouteComponentProps) => {
-  return (
-    <MainHeaderWrap>
-      <div className="header">
-        <img className="header__menu" src={MenuIcon} alt="" />
-        <div className="header__title" onClick={() => history.push("/")}>
-          Diary App
-        </div>
-        <img className="header__profile" src={ProfileIcon} alt="" />
-      </div>
-      <div className="header__hr"></div>
-    </MainHeaderWrap>
-  );
-};
-
-export default withRouter(MainHeader);

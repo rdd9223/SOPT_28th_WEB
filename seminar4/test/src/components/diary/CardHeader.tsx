@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import styled from "styled-components";
+import Styled from "styled-components";
 import { ICardHeaderProps } from "../../interface";
 
 function CardHeader({
@@ -44,7 +44,7 @@ function CardHeader({
 
 export default withRouter(CardHeader);
 
-const CardHeaderWrap = styled.div`
+const CardHeaderWrap = Styled.div`
   display: flex;
   align-items: flex-end;
   width: 642px;

@@ -54,3 +54,8 @@ export interface ICardInfoProps {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => void;
 }
+
+export interface IDiaryCardProps extends RouteComponentProps<IMatchParams> {
+  data: ICard;
+  rawData: IRawData;
+}

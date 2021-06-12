@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import Styled from "styled-components";
 import CardHeader from "./CardHeader";
 import CardInfo from "./CardInfo";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { dateState } from "../../states/date";
 import { createCardData } from "../../lib/api";
-import { ICard, IMatchParams, IRawData } from "../../interface";
+import { IDiaryCardProps } from "../../interface";
 
-interface ICardProps extends RouteComponentProps<IMatchParams> {
-  data: ICard;
-  rawData: IRawData;
-}
-
-function Card({ data, match, history, rawData }: ICardProps) {
+function Card({ data, match, history, rawData }: IDiaryCardProps) {
   const id = parseInt(match.params.id);
   const isReadOnly = match.path === "/diary/:id";
   const { year, month } = useRecoilValue(dateState);
@@ -70,7 +65,7 @@ function Card({ data, match, history, rawData }: ICardProps) {
 
 export default withRouter(Card);
 
-const CardWrap = styled.div`
+const CardWrap = Styled.div`
   width: 785px;
   height: 600px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import Styled from "styled-components";
 import EmptyImage from "../../assets/Image.svg";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
@@ -116,7 +116,7 @@ const BootstrapInput = withStyles((theme) => ({
   },
 }))(InputBase);
 
-const CardInfoWrap = styled.div`
+const CardInfoWrap = Styled.div`
   display: flex;
   width: 642px;
   margin: 19px auto;

@@ -8,13 +8,7 @@ import { useRecoilValue } from "recoil";
 import { dateState } from "../states/date";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
-const MainWrap = Styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  row-gap: 25px;
-`;
-
-const Main = ({ history }: RouteComponentProps) => {
+function Main({ history }: RouteComponentProps) {
   const [userData, setUserData] = React.useState<ICard[] | null>(null);
   const [rawData, setRawData] = React.useState<IRawData | null>(null);
   const date = useRecoilValue(dateState);
@@ -43,6 +37,12 @@ const Main = ({ history }: RouteComponentProps) => {
       />
     </MainWrap>
   );
-};
+}
 
 export default withRouter(Main);
+
+const MainWrap = Styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  row-gap: 25px;
+`;

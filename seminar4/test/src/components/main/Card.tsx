@@ -1,16 +1,49 @@
 import React from "react";
-import styled from "styled-components";
+import Styled from "styled-components";
 import EmptyImage from "../../assets/Image.svg";
 import { ICardProps } from "../../interface";
 
-// 서버에 date가 20200509 형식으로 저장되어있기 때문에, 이를 "5월 9일" 형태로 반환하는 함수입니다
 const getDateFormat = (date: number) => {
   const month = parseInt(`${(date % 10000) / 100}`);
   const day = date % 100;
   return `${month}월 ${day}일`;
 };
 
-const CardWrap = styled.div`
+function Card({ props, onClickFunc }: ICardProps) {
+  const { date, title, image, weather, tags } = props;
+
+  return (
+    <CardWrap>
+      <div className="card" onClick={onClickFunc}>
+        <div className="card__image">
+          {image ? (
+            <img className="card__image--photo" src={image} alt="" />
+          ) : (
+            <img className="card__image--empty" src={EmptyImage} alt="" />
+          )}
+        </div>
+        <div className="card__top">
+          <div className="card__top--date">{getDateFormat(date)}</div>
+          <div className="card__top--weather">{weather}</div>
+        </div>
+        <div className="card__title">{title || "제목 없음"}</div>
+        <div className="card__tags">
+          {tags.map((tag: string, index: number) => {
+            return (
+              <div key={index} className="card__tags--tag">
+                {tag}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </CardWrap>
+  );
+}
+
+export default Card;
+
+const CardWrap = Styled.div`
   .card {
     box-sizing: border-box;
     width: 220px;
@@ -82,37 +115,3 @@ const CardWrap = styled.div`
     }
   }
 `;
-
-const Card = ({ props, onClickFunc }: ICardProps) => {
-  const { date, title, image, weather, tags } = props;
-
-  return (
-    <CardWrap>
-      <div className="card" onClick={onClickFunc}>
-        <div className="card__image">
-          {image ? (
-            <img className="card__image--photo" src={image} alt="" />
-          ) : (
-            <img className="card__image--empty" src={EmptyImage} alt="" />
-          )}
-        </div>
-        <div className="card__top">
-          <div className="card__top--date">{getDateFormat(date)}</div>
-          <div className="card__top--weather">{weather}</div>
-        </div>
-        <div className="card__title">{title || "제목 없음"}</div>
-        <div className="card__tags">
-          {tags.map((tag: string, index: number) => {
-            return (
-              <div key={index} className="card__tags--tag">
-                {tag}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </CardWrap>
-  );
-};
-
-export default Card;
