@@ -8,6 +8,7 @@ function CardHeader({
   isReadOnly,
   handleChange,
   handleEdit,
+  handleDelete,
   history,
   match,
 }: ICardHeaderProps) {
@@ -34,7 +35,9 @@ function CardHeader({
           완료
         </button>
       )}
-      <button className="header__delete">삭제</button>
+      <button className="header__delete" onClick={handleDelete}>
+        삭제
+      </button>
     </CardHeaderWrap>
   );
 }

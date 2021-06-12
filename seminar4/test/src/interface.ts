@@ -43,7 +43,8 @@ export interface ICardHeaderProps extends RouteComponentProps<IMatchParams> {
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => void;
-  handleEdit: () => void;
+  handleEdit: () => Promise<void>;
+  handleDelete: () => Promise<void>;
 }
 
 export interface ICardInfoProps {

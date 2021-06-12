@@ -35,7 +35,15 @@ function Card({ data, match, history, rawData }: ICardProps) {
     newList[month][id] = state;
 
     const data = await createCardData({ ...rawData, [year]: newList });
+    history.goBack();
+  };
 
+  const handleDelete = async () => {
+    const filteredList = rawData[year][month].filter((data) => data.id !== id);
+    const newList = rawData[year].filter((data) => data);
+    newList[month] = filteredList;
+
+    const data = await createCardData({ ...rawData, [year]: newList });
     history.goBack();
   };
 
@@ -46,6 +54,7 @@ function Card({ data, match, history, rawData }: ICardProps) {
         isReadOnly={isReadOnly}
         handleChange={handleChange}
         handleEdit={handleEdit}
+        handleDelete={handleDelete}
       />
       <CardInfo data={state} isReadOnly={isReadOnly} handleChange={handleChange} />
       <textarea
