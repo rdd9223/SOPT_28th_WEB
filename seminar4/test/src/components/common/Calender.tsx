@@ -6,6 +6,7 @@ import RightOn from "../../assets/RightOn.svg";
 import Styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { dateState } from "../../states/date";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
 const CalendarWrap = Styled.div`
   .calendar {
@@ -56,14 +57,15 @@ const CalendarWrap = Styled.div`
   }
 `;
 
-const Calendar = () => {
+const Calendar = ({ location }: RouteComponentProps) => {
   const monthList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   const leftButton = useRef<HTMLImageElement>(null);
   const rightButton = useRef<HTMLImageElement>(null);
   const [date, setDate] = useRecoilState(dateState);
+  const isMain = location.pathname === "/";
 
-  const addYear = () => setDate({ ...date, year: date.year + 1 });
-  const subYear = () => setDate({ ...date, year: date.year - 1 });
+  const addYear = () => isMain && setDate({ ...date, year: date.year + 1 });
+  const subYear = () => isMain && setDate({ ...date, year: date.year - 1 });
 
   return (
     <CalendarWrap>
@@ -108,4 +110,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default withRouter(Calendar);
